@@ -3,3 +3,4 @@ __pycache__/
 *.pyc
 /data/*
 /.ipynb_checkpoints/*
+*_BD*
