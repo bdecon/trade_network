@@ -1,0 +1,22 @@
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}
+\contentsline {section}{\numberline {2}Literature Review}{4}{section.2}
+\contentsline {section}{\numberline {3}Model}{5}{section.3}
+\contentsline {subsection}{\numberline {3.1}Theoretical background}{5}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Microfoundation}{7}{subsection.3.2}
+\contentsline {section}{\numberline {4}Methodology and Data}{9}{section.4}
+\contentsline {subsection}{\numberline {4.1}Network analysis: overview and centrality}{9}{subsection.4.1}
+\contentsline {subsubsection}{\numberline {4.1.1}Network overview}{9}{subsubsection.4.1.1}
+\contentsline {subsubsection}{\numberline {4.1.2}Degree and eigenvector centrality}{10}{subsubsection.4.1.2}
+\contentsline {subsection}{\numberline {4.2}Network analysis: degree distribution}{11}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Two econometric models}{13}{subsection.4.3}
+\contentsline {subsubsection}{\numberline {4.3.1}Imports decomposition model}{13}{subsubsection.4.3.1}
+\contentsline {subsubsection}{\numberline {4.3.2}Oil price shocks model}{15}{subsubsection.4.3.2}
+\contentsline {subsection}{\numberline {4.4}Data sources and treatment}{17}{subsection.4.4}
+\contentsline {section}{\numberline {5}Results}{18}{section.5}
+\contentsline {subsection}{\numberline {5.1}Results: Network analysis}{18}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Results: Oil and gas in detail}{19}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Results: Imports decomposition model}{20}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.4}Results: Oil price shocks model}{21}{subsection.5.4}
+\contentsline {section}{\numberline {6}Conclusion}{23}{section.6}
+\contentsline {section}{\numberline {7}References}{25}{section.7}
+\contentsline {section}{Appendex}{28}{section*.12}
