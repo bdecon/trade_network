@@ -5,15 +5,15 @@
 % Brian Dew
 %
 %%%%%%%%%
-	\documentclass[10pt,letterpaper]{article}
+	\documentclass[10pt,letterpaper,pdftex]{article}
 
 %
 % Packages
 %
+	\usepackage[pdftex]{graphicx}	
 	\usepackage[right=1.6in, left=1.6in, top=1.6in, bottom=1.6in]{geometry}
 	\usepackage{pgfplots,pgfplotstable}
 	\usepackage{amsmath,amsthm,amssymb}	
-	\usepackage{graphicx}
 	\usepackage[colorlinks,
   		linkcolor=cyan!30!blue!80!black,
   		filecolor=cyan!30!blue!80!black,
@@ -37,7 +37,7 @@
 	\usetikzlibrary{automata, arrows}
 	\usepackage[activate={true,nocompatibility},final=true,kerning=true,
 		spacing=true,tracking=true,shrink=30,stretch=30,factor=0]{microtype}
- 
+		
 \usepackage{sectsty}
 \sectionfont{\usefont{T1}{qhv}{b}{n}\selectfont\Large} 
 \subsectionfont{\usefont{T1}{qhv}{b}{n}\selectfont\large} 
@@ -49,6 +49,7 @@
 \lhead{\leftmark}
 \cfoot{\thepage}
 
+\pgfplotsset{compat=newest}
 
 \newcommand{\invisiblesection}[1]{%
   \phantomsection%
@@ -126,7 +127,7 @@ Essentially, if localized shocks are large enough, and production processes subj
 
 \subsubsection*{\centerline{Visual representation: shock to central vs. non-central supplier}}
 \vspace{1mm}
-\begin{figure}[h]
+\begin{figure}[ht]
 \caption[]{The effect of a negative shock to Australian iron ore exports depends on network structure. Here circles represent countries, with Australia (AUS) as the localized supply-shock affected country, in red, countries without a functioning supplier in orange, and unaffected countries in blue\footnotemark. Solid lines represent unaffected trade flows and dashed lines represent compromised trade flows.} \label{fig:M1}
 \centering
 \begin{tikzpicture}
@@ -352,7 +353,7 @@ Next, to capture own (domestic) shocks, I control for changes to exchange rates 
 
 Lastly, to test the hypothesis that the distribution of exporter sizes affects whether supply shocks propagate or die out, it is critical to measure the upstream (foreign) shock and isolate different shocks by the network structure through which they arrive. This can be done by decomposing previous period intermediate\footnote{All final consumption are goods excluded to isolate products which can have downstream affects} goods imports into four categories, defined as follows:
 
-\begin{table}[h]\centering \caption{Categories of intermediate good imports, goods indexed by $k$ \label{mtab}}
+\begin{table}[ht]\centering \caption{Categories of intermediate good imports, goods indexed by $k$ \label{mtab}}
 	\begin{tabular}{l | c | c}
 	\toprule
 	 & central players & no central players \\
@@ -682,9 +683,9 @@ Hai Ying Zhang, Qiang Ji \& Ying Fan (2014) Competition, transmission and patter
 
 \newpage 
 \setcounter{secnumdepth}{0}
-\section{Appendex} \label{appendix}
+\section{Appendix} \label{appendix}
 
-\noindent \begin{table}[h]\centering
+\noindent \begin{table}[ht]\centering
  \caption{Measures of Real Exports by Country (25 largest exporters shown)}
  \resizebox{\textwidth}{!}{%
 \begin{tabular}{lrrrccr}
@@ -734,7 +735,7 @@ Hungary            & 79.96   & -0.24 & 0.22 & 39 & 35 & 0.00 \\
 \end{figure}
 
 
-\begin{table}[h]
+\begin{table}[ht]
 \centering
 \caption{Top ten power-law distributed goods by export value, 2014}
 \resizebox{\textwidth}{!}{%
@@ -759,7 +760,7 @@ code    & exports & in tons       & exporters   & importers   & $\alpha$  & esti
 \end{tabular}}
 \end{table}
 
-\begin{table}[h]
+\begin{table}[ht]
 \centering
 \caption{Top ten normally distributed goods by export value, 2014}
 \resizebox{\textwidth}{!}{%
