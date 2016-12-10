@@ -6,7 +6,7 @@
 %
 %%%%%%%%%
 	\documentclass[10pt,letterpaper,pdftex]{article}
-
+	\frenchspacing
 %
 % Packages
 %
@@ -51,19 +51,27 @@
 
 \pgfplotsset{compat=newest}
 
-\newcommand{\invisiblesection}[1]{%
-  \phantomsection%
-  \stepcounter{section}%
-  \addcontentsline{toc}{section}{\protect\numberline{\thesection}#1}%
-  }
-
+\usepackage[subfigure]{tocloft} % subfigure option only if using subfigure package
+\renewcommand{\cfttoctitlefont} % ToC title
+             {\usefont{T1}{qhv}{b}{n}\selectfont\huge}
+\renewcommand{\cftsecfont} % section titles
+             {\usefont{T1}{bch}{m}{n}\selectfont}
+\renewcommand{\cftsubsecfont} % subsection titles
+             {\usefont{T1}{bch}{m}{n}\selectfont} 
+\renewcommand{\cftsecpagefont} % section page numbers
+             {\cftsecfont} 
+\renewcommand{\cftsubsecpagefont} % subsection page numbers
+             {\cftsubsecfont}
+\renewcommand\cftaftertoctitle{\par\noindent\hrulefill\par\vskip0.3em}
+             
+\font\myfont=cmr12 at 22pt
 
 %
 % Title Info
 %
 
 	\author{Brian W. Dew\thanks{This paper benefits from constructive feedback from Professor Kara Reynolds and Professor Amin Mohseni-Cheraghlou, both American University Department of Economics. The research builds on work with Yevgeniya Korniyenko and Magali Pinat, both International Monetary Fund. Results were produced using Stata and Python's networkX and powerlaw packages, see: \url{https://github.com/bdecon/trade_network}. All errors in this paper are my own.}\\ (brian.dew@american.edu)}
-	\title{The International Trade Network Origins of Domestic Fluctuations}
+	\title{\myfont The International Trade Network Origins of Domestic Fluctuations}
 
 \tikzset{
     	every node/.append style={font=\sansmath\sffamily\footnotesize}}
@@ -806,10 +814,10 @@ Notes: The U.S. share of imports of all three products have decreased since 2008
 \noindent \begin{figure} \label{fig:map}
   \caption{Changes to eigenvector centrality scores}
   {\centering
-\includegraphics[scale=0.6]{map/exports_centrality_growth.pdf} \\
+\includegraphics[scale=0.6, trim={1cm 0 0 0}, clip]{map/exports_centrality_growth.pdf} \\
 \vspace{3mm}
 
-\includegraphics[scale=0.6]{map/imports_centrality_growth.pdf} \\ \par
+\includegraphics[scale=0.6, trim={1cm 0 0 0}, clip]{map/imports_centrality_growth.pdf} \\ \par
 } 
 \footnotesize{Source: IMF Direction of Trade Statistics; own calculations. \\
 Notes: Export growth has been very uneven since 2008, with exporters of primary commodities hit particularly hard. Saudi Arabia, Canada, Russia, Nigeria, and Venezuela are oil exporters who see their centrality in global exports fall by 2.5 points or more. Japan, much of the core eurozone, and the U.K. see export centrality reduced by three points or more. China improves its export centrality by 7.5 points in the eight year period. South Korea sees the second largest increase, followed by Mexico, Vietnam, the U.S., Malaysia, Australia, and Thailand. On the import side, China again grows by more than 7 points, followed by Hong Kong with an increase of 5.3 points. Mexico, Vietnam, and the U.S. all grow by more than 3 points, while India, Tunisia, Saudi Arabia, and the U.A.E. all grow by more than one point. The eurozone is the hardest hit. A long economic downturn has battered trade volumes, while trade partnerships between traditionally periphery countries strengthened.}
