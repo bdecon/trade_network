@@ -42,12 +42,25 @@
 \sectionfont{\usefont{T1}{qhv}{b}{n}\selectfont\Large} 
 \subsectionfont{\usefont{T1}{qhv}{b}{n}\selectfont\large} 
 \subsubsectionfont{\usefont{T1}{qhv}{b}{n}\selectfont\normalsize} 
+
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+
  
 \pagestyle{fancy}
+\renewcommand{\sectionmark}[1]{\markboth{#1}{}} % set the \leftmark
 \fancyhf{}
+
+\lhead{\scshape\leftmark}
+\chead{}
 \rhead{}
-\lhead{\leftmark}
-\cfoot{\thepage}
+\cfoot{\footnotesize\selectfont\bfseries\thepage}
+
+\renewcommand{\headrulewidth}{0.4pt}
+
+\fancypagestyle{emptyheader}{%
+    \fancyhead{}
+}
+
 
 \pgfplotsset{compat=newest}
 
@@ -83,12 +96,12 @@
 \end{abstract}
 
 \newpage
-
+\thispagestyle{emptyheader}
 \tableofcontents
 
 \newpage
 
-\section{Introduction} \label{intro}
+\section{Introduction}\thispagestyle{emptyheader} \label{intro}
 
 Economists have long discussed how (and whether) idiosyncratic shocks affect the larger economy (Lucas 1977, Kydland and Prescott 1982, Jovanovic 1987). Recent research examines how networks, the relationship between economic agents, provide a linkage between idiosyncratic shocks and macroeconomic outcomes (Gabaix 2011, Carvalho 2008, Acemoglu et al 2012, Chaney 2014).  Within this discussion, one area that has received less focus, but provides useful insight, is the international trade network effects of localized supply shocks, such as those caused by natural disasters. 
 
@@ -105,7 +118,7 @@ Additionally, to better explain the models and demonstrate the usefulness of the
 The paper proceeds as follows: section 2 offers a review of the literature on network analysis and trade, section 3 describes the economic theory behind the research, section 4 serves as the core of the paper and explains both models, including the network analysis measures used and the data sources, section 5 presents the results of econometric tests of the models, and section 6 offers the conclusion and describes areas for additional study.
 
 
-\section{Literature Review} \label{litrev}
+\section{Literature Review}\thispagestyle{emptyheader} \label{litrev}
 
 Networks have long been a natural way to represent related sets of bilateral relationships, including social connections between people in a group, connections between suppliers and producers in an economy, and the global trade of goods and services between countries. Early examinations of international trade as a network include Snyder and Kick (1979), Nemeth and Smith (1985), and Smith and White (1992). A recent and thorough description of the world trade network comes from De Benedictis and Tajoli (2011) who provide a detailed description of network analysis tools and note the presence of changes in network structure over time. Countries have as a whole become more interconnected, but also more heterogeneous in their role in networks (IMF 2011). 
 
@@ -124,7 +137,7 @@ Recent work on network analysis of trade has extended to examinations of individ
 Unlike the previous research, this work examines the differences between the trade network structures of various goods at a dis-aggregated level of specificity. Further, I examine what implication this has for the transmission of shocks, and how the transmission of shocks can thereby affect aggregate outcomes. Additional consideration is given to the distribution of features within a network, and the dynamic aspects of shock propagation.
 
 
-\section{Model} \label{models}
+\section{Model}\thispagestyle{emptyheader} \label{models}
 \subsection{Theoretical background} \label{modelstheory}
 Xavier Gabaix (2011) offered theoretical and empirical evidence against the argument of Lucas (1977) that firm-specific shocks average out. Gabaix showed that 1/3 of output volatility in the United States can be directly tied to changes in the 100 largest U.S. firms. When firm sizes follow a power-law distribution, idiosyncratic shocks do not average out, and actually propagate downstream and affect aggregate economic output. This is because there are often few central suppliers for the key inputs to several industries. A shock to one the central firms causes consequences for all firms that require the input for their own production. I hypothesize that this relationship holds internationally, particularly given actual variation in the volume of exports by product and country, and the rise of international trade of intermediate goods due to global value chains. 
 
@@ -268,7 +281,7 @@ where $\bm{1}_{j=i}$ is the indicator function for $j=i$.
 
 Equation \ref{eq:main_aak} explains fluctuations in aggregate output for country $i$ as the combination of domestic idiosyncratic shocks, the connections to other countries through the trade of goods, and both the existence and importance to country $i$ of shocks to other countries. Shocks to country $j$ will affect country $i$ if the existing level of trade between the countries is large and also if there are few alternative suppliers. 
 
-\section{Methodology and Data} \label{data}
+\section{Methodology and Data} \thispagestyle{emptyheader} \label{data}
 Econometric tests of the theory require estimates both of the distribution of supplier sizes and the role of each country in the global trade network, which is obtained by using the tools of network analysis. Shocks, which for the purpose of this research must be exogenous, are identified using data on natural disasters and the price of oil. This section describes the techniques used to generate estimates for econometric analysis, and discusses the mathematical, statistical, and economic support for the variable selection. 
 
 \subsection{Network analysis: overview and centrality} \label{nw1}
@@ -438,7 +451,7 @@ Remaining data on total exports of goods, import and export prices, and the real
 
 The availability of sufficient exchange rate, exports, and price information is limited, reducing the total number of countries included in econometric analysis of the imports decomposition model to 80. The imports decomposition and product-level analysis, however, is based on the full sample of 217 countries, so that the fewest possible nodes are excluded from the network analysis stage.
 
-\section{Results} \label{results}
+\section{Results} \thispagestyle{emptyheader}\label{results}
 This section presents the main findings of the network analysis components, the specific case of oil and gas networks, and both models for examining broader implications of network structure. Results largely confirm intuitive expectations discussed in section 4. The finding related to model one are significant both economically and statistically, whereas results from model two are far less robust, suggesting that network effects do not present themselves fully in the very short-run.
 
 \subsection{Results: Network analysis} \label{results_nw}
@@ -554,7 +567,9 @@ As mentioned, there are doubts to the reliability and economic significance of t
 
 As a result, rather dismiss the possibility of a very short run response to global shocks determined by network position, additional work is required to fully explore the possibility, and the overall results obtained by this model should not be interpreted as economically meaningful. 
 
-\section{Conclusion} \label{conclusion}
+\newpage 
+
+\section{Conclusion} \thispagestyle{emptyheader} \label{conclusion}
 Model 1 results discussed in section \ref{results} are largely consistent with the theoretical prediction that a country's role in its network, and the size distribution and role of its trading partners, determines its exposure to routine exogenous shocks. Indeed, even at an international level, the distribution of supplier sizes presents a mechanism through which localized shocks can cross borders. Beyond the implication for international trade as a whole, one key contribution of this work is the discussion of international trade networks for individual goods. Additionally, this finding generates several policy implications, as well as the need for further research, which are discussed in this section. 
 
 As demonstrated, the global trade network for individual goods varies both between goods and over time, and network analysis can succinctly capture these variations. Oil and gas trade networks have shifted in response to broad changes in energy production and consumption, and these changes can be seen in detail (figure 7, for example). The same process works for any product and while writing this paper many interesting cases were considered. Several products identified in literature related to global value chains and the 2011 natural disasters in Japan and Thailand (discussed in section \ref{modelstheory}) show power-law distributed suppliers before the disasters and a less central role for Japan and Thailand following the disasters. The examination of trade networks at a product level may be able to identify certain `linchpin' products based on their unique characteristics.
@@ -569,7 +584,7 @@ I also advocate further work within the topic of this paper. Primarily, addition
 
 
 \newpage
-
+\thispagestyle{emptyheader}
 
 
 \begin{thebibliography}{99}
@@ -691,7 +706,7 @@ Hai Ying Zhang, Qiang Ji \& Ying Fan (2014) Competition, transmission and patter
 
 \newpage 
 \setcounter{secnumdepth}{0}
-\section{Appendix} \label{appendix}
+\section{Appendix} \thispagestyle{emptyheader} \label{appendix}
 
 \noindent \begin{table}[ht]\centering
  \caption{Measures of Real Exports by Country (25 largest exporters shown)}
