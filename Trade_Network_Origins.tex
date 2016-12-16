@@ -39,6 +39,7 @@
 		spacing=true,tracking=true,shrink=30,stretch=30,factor=0]{microtype}
 		
 \usepackage{sectsty}
+\chapterfont{\usefont{T1}{qhv}{b}{n}\selectfont\Large} 
 \sectionfont{\usefont{T1}{qhv}{b}{n}\selectfont\Large} 
 \subsectionfont{\usefont{T1}{qhv}{b}{n}\selectfont\large} 
 \subsubsectionfont{\usefont{T1}{qhv}{b}{n}\selectfont\normalsize} 
@@ -50,7 +51,7 @@
 \renewcommand{\sectionmark}[1]{\markboth{#1}{}} % set the \leftmark
 \fancyhf{}
 
-\lhead{\scshape\leftmark}
+\lhead{\scshape\usefont{T1}{qhv}{b}{n}\selectfont\normalsize\leftmark}
 \chead{}
 \rhead{}
 \cfoot{\footnotesize\selectfont\bfseries\thepage}
@@ -120,7 +121,7 @@ The paper proceeds as follows: section 2 offers a review of the literature on ne
 
 \section{Literature Review}\thispagestyle{emptyheader} \label{litrev}
 
-Networks have long been a natural way to represent related sets of bilateral relationships, including social connections between people in a group, connections between suppliers and producers in an economy, and the global trade of goods and services between countries. Early examinations of international trade as a network include Snyder and Kick (1979), Nemeth and Smith (1985), and Smith and White (1992). A recent and thorough description of the world trade network comes from De Benedictis and Tajoli (2011) who provide a detailed description of network analysis tools and note the presence of changes in network structure over time. Countries have as a whole become more interconnected, but also more heterogeneous in their role in networks (IMF 2011). 
+Networks are a natural way to represent related sets of bilateral relationships, including social connections between people in a group, connections between suppliers and producers in an economy, and the global trade of goods and services between countries. Early examinations of international trade as a network include Snyder and Kick (1979), Nemeth and Smith (1985), and Smith and White (1992). A recent and thorough description of the world trade network comes from De Benedictis and Tajoli (2011) who provide a detailed description of network analysis tools and note the presence of changes in network structure over time. Countries have as a whole become more interconnected, but also more heterogeneous in their role in networks (IMF 2011). 
 
 Rather than describing the trade network, economists are more often interested in using network analysis to explain real world phenomena. Glick and Rose (1999) found evidence that currency crises spread through trade channels more than they can be explained within a country by macroeconomic or financial fundamentals. Likewise, network analysis has been used to study financial contagion from interconnections in the banking sector and how this poses systemic risk (Minoiu and Reyes 2011). This work examines how otherwise localized shocks spread through international trade networks.
 
@@ -137,7 +138,7 @@ Recent work on network analysis of trade has extended to examinations of individ
 Unlike the previous research, this work examines the differences between the trade network structures of various goods at a dis-aggregated level of specificity. Further, I examine what implication this has for the transmission of shocks, and how the transmission of shocks can thereby affect aggregate outcomes. Additional consideration is given to the distribution of features within a network, and the dynamic aspects of shock propagation.
 
 
-\section{Model}\thispagestyle{emptyheader} \label{models}
+\section{Theoretical model}\thispagestyle{emptyheader} \label{models}
 \subsection{Theoretical background} \label{modelstheory}
 Xavier Gabaix (2011) offered theoretical and empirical evidence against the argument of Lucas (1977) that firm-specific shocks average out. Gabaix showed that 1/3 of output volatility in the United States can be directly tied to changes in the 100 largest U.S. firms. When firm sizes follow a power-law distribution, idiosyncratic shocks do not average out, and actually propagate downstream and affect aggregate economic output. This is because there are often few central suppliers for the key inputs to several industries. A shock to one the central firms causes consequences for all firms that require the input for their own production. I hypothesize that this relationship holds internationally, particularly given actual variation in the volume of exports by product and country, and the rise of international trade of intermediate goods due to global value chains. 
 
@@ -291,23 +292,23 @@ Representing global trade relationships as a complex network provides insight in
 To begin the network analysis, each country involved in the international trade of a good or set of goods is identified as a `node'. Each node may either produce a good and supply it another country as an export, or consume a good produced in another country as an import. These exports and imports comprise the trade flows between countries and are represented in a network as an `edge', usually shown as a line or arrow connecting two nodes. Each edge contains important information about the flow of goods between two countries. First, each edge is `directed' as the flow of goods exits the exporter node and enters the importer node. Edges directed outward from a node represent that nodes' exports, while edges directed inward to the node represent its imports. Additionally, in the global trade network each edge contains `weights', which are the value and quantity of goods associated with the trade flow.
 
 \begin{figure}[!htb]\label{fig:nw_simple}
-  \caption{Single trade flow, exports from country $i$ to country $j$, as a `network'}
+  \caption{Single trade flow, exports of good $g$ from country $i$ to country $j$, as a `network'}
   {\centering
 \begin{tikzpicture}[>=stealth',shorten >=1pt,auto,node distance=2.8cm,every node/.style={inner sep=1pt}]
   \node[state,fill=orange!40!yellow] (q1)      {$i$};
   \node[state,fill=orange!40!yellow]         (q2) [right of=q1]  {$j$};
-  \path[->]          (q1)  edge                 node {$X_{ij}$} (q2);
+  \path[->]          (q1)  edge                 node {$X^g_{ij}$} (q2);
 \end{tikzpicture}\\}
 \end{figure}
 
 Even a simple bilateral trade flow can be represented as a network (figure 2). To build the complete network, I continue to add nodes and edges until all flows are included. Once a complete network is constructed, additional techniques for describing individual nodes, as well as the overall structure of the network, become available.
 
 \subsubsection{Degree and eigenvector centrality} \label{nw3}
-One simple measure of how an individual node is related to its network is the number of connections it has to other nodes, referred to as its `degree'. In international trade a country's degree is its total number of trading partners. As with edges, the degree of a node is directed. The out-degree of a node measures the number of nodes to which it is connected through its exports, while the in-degree of a node captures the number of nodes it is connected to through imports. That is, if country $i$ exports good $k$ to nine countries and imports good $k$ from three countries, its out-degree is nine and its in-degree is three. Degree can also be `weighted' to capture the total value of directed flows.  The weighted out-degree corresponds to the total value or quantity of exports (depending on which is used as the weight), while the the weighed in-degree is the total value of quantity of imports. 
+One simple measure of how an individual node is related to its network is the number of connections it has to other nodes, referred to as its `degree'. In international trade a country's degree is its total number of trading partners. As with edges, the degree of a node is directed. The out-degree of a node measures the number of nodes to which it is connected through its exports, while the in-degree of a node captures the number of nodes it is connected to through imports. That is, if country $i$ exports good $g$ to nine countries and imports good $g$ from three countries, its out-degree is nine and its in-degree is three. Degree can also be `weighted' to capture the total value of directed flows.  The weighted out-degree corresponds to the total value or quantity of exports (depending on which is used as the weight), while the the weighed in-degree is the total value of quantity of imports. 
 
 Often researchers are interested in how a node compares with other nodes in its network. There are several ways to compare the role of individual nodes, with various measures of `centrality' being the most common. Centrality captures the influence that an individual node has in its network, and very influential nodes are colloquially referred to as `central players'. Two distinct measures of centrality are degree centrality and eigenvector centrality. 
 
-The degree centrality of a node is the share of other nodes to which it is connected. The out-degree centrality measures the share of importers that are serviced by each exporter, while the in-degree centrality captures the share of exporters that service each importer. I represent the out-degree centrality of country $i$ in network $g$ comprised of $n$ nodes, $C_i^{\text{out}}(g)$, as its number of exporting edges (out-degree), $k_i^{\text{out}}$, divided by the total number of possible import partner nodes, $(n-1)$:
+The degree centrality of a node is the share of other nodes to which it is connected. The out-degree centrality measures the share of importers that are serviced by each exporter, while the in-degree centrality captures the share of exporters that service each importer. I represent the out-degree centrality of country $i$ in the network for good $g$ comprised of $n$ nodes, $C_i^{\text{out}}(g)$, as its number of exporting edges (out-degree), $k_i^{\text{out}}$, divided by the total number of possible import partner nodes, $(n-1)$:
 \begin{equation} 
 C_i^{\text{out}}(g) = \frac{k_i^{\text{out}}}{(n-1)}
 \end{equation}
@@ -324,17 +325,17 @@ where from \eqref{eq:evc} in matrix notation, $\lambda C^e(g) = gC^e(g)$, and th
 \subsection{Network analysis: degree distribution} \label{nw4}
 In addition to measures which examine the role of each country, measures which cover the entire trade network provide information on the size and structure of the market. As discussed in section \ref{modelstheory}, the distribution of supplier sizes is of economic importance, particularly if it follows a power law distribution. In network analysis, the distribution of connections in a network is referred to as the degree distribution. 
 
-The relative frequency of exporter sizes in the trade network is represented as $p(x)$, the fraction of nodes with weighted out-degree $x$ under probability distribution $p$. This paper focuses on the distribution of exporter sizes, as measured by the weighted out-degree distribution, however, the distribution of importer sizes by product has additional economic significance.
+The relative frequency of exporter sizes in the trade network is represented as $p(X^g_{i})$, the fraction of nodes with weighted out-degree $X_i$ for good $g$ under probability distribution $p$. This paper focuses on the distribution of exporter sizes, as measured by the weighted out-degree distribution, however, the distribution of importer sizes by product has additional economic significance.
 
 The distribution of exporter sizes is said to follow a power-law distribution if the frequency of the exporter sizes is proportional to the exporter size raised to a `power'. The probability distribution is expressed as:
 
 \begin{equation}
-p(x) = Cx^{-\alpha}
+p(X^g_{ij}) = Cx^{-\alpha}
 \end{equation}
 
 where C is a normalization constant greater than zero, and $\alpha$ is an exponent parameter greater than one. The exponent parameter of a power-law distributed network is typically in the range $2 < \alpha < 3$, which is used as the cutoff range in this research. Goods which can be reasonably fit to a power-law distribution, with an estimated $\alpha$ parameter within the specified range, are considered to be power-law distributed in section \ref{imports_decomp}. The estimation of the $\alpha$ parameter for each good follows methods discussed by Clausett (2012).
 
-Figure 3 shows the complementary cumulative distribution function (CCDF) of total export values by country for two goods in 2014. Both axes are in log scale. The vertical axis measures the probability that an individual export flow, $X$, is larger than $x$, the value on the horizontal axis. The horizontal axis measures the nominal US Dollar value of exports in 2014. Coffee, picked by hand, is grown by many countries in a band surrounding the equator, and does not experience central players in its trade network. As much as individuals may show preference for certain types of coffee, the size of suppliers is not well-approximated by a power law distribution. 
+Figure 3 shows the complementary cumulative distribution function (CCDF) of total export values by country for two goods in 2014. Both axes are in log scale. The vertical axis measures the probability that exporter size for an individual good, $X^g_{i}$, measured by the outdegree centrality, is larger than $x$, the value on the horizontal axis. The horizontal axis measures the nominal US Dollar value of exports in 2014. Coffee, picked by hand, is grown by many countries in a band surrounding the equator, and does not experience central players in its trade network. As much as individuals may show preference for certain types of coffee, the size of suppliers is not well-approximated by a power law distribution. 
 
 In contrast, crude oil, the most traded good on earth, has a very public cartel. A few extremely large producers dominate the supply, while the demand side is also skewed towards the consumption-driven G8 economies. The result is a relatively small number of very large suppliers, which can be seen by the fit of figure 2a. The probability of a crude oil supplier existing (solid line) nearly always exceeds the exact fit of a power law distribution (dashed line) as the logged value of exports increases. Theoretical predictions surrounding the power law distribution of supplier sizes for such a critical intermediate good are further explored in the second model. 
 
@@ -374,14 +375,14 @@ Next, to capture own (domestic) shocks, I control for changes to exchange rates 
 
 Lastly, to test the hypothesis that the distribution of exporter sizes affects whether supply shocks propagate or die out, it is critical to measure the upstream (foreign) shock and isolate different shocks by the network structure through which they arrive. This can be done by decomposing previous period intermediate\footnote{All final consumption are goods excluded to isolate products which can have downstream affects} goods imports into four categories, defined as follows:
 
-\begin{table}[ht]\centering \caption{Categories of intermediate good imports, goods indexed by $k$ \label{mtab}}
+\begin{table}[ht]\centering \caption{Categories of intermediate good imports, goods indexed by $g$ \label{mtab}}
 	\begin{tabular}{l | c | c}
 	\toprule
 	 & central players & no central players \\
 	 \midrule
-	 shock in time $t$ & $M^{cs}_{i,t-1} = \sum_{k=1}^{n} M^{cs}_{k,i,t-1}$ & $M^{ns}_{i,t-1} = \sum_{k=1}^{n}M^{ns}_{k,i,t-1}$ \\
+	 shock in time $t$ & $M^{cs}_{i,t-1} = \sum_{g=1}^{n} M^{cs}_{g,i,t-1}$ & $M^{ns}_{i,t-1} = \sum_{g=1}^{n}M^{ns}_{g,i,t-1}$ \\
 	 \midrule
-	 no shock & $M^{cn}_{i,t-1} = \sum_{k=1}^{n} M^{cn}_{k,i,t-1}$ & $M^{nn}_{i,t-1} = \sum_{k=1}^{n}M^{nn}_{k,i,t-1}$ \\
+	 no shock & $M^{cn}_{i,t-1} = \sum_{g=1}^{n} M^{cn}_{g,i,t-1}$ & $M^{nn}_{i,t-1} = \sum_{g=1}^{n}M^{nn}_{g,i,t-1}$ \\
 	 \bottomrule
 	\end{tabular}
 	\end{table}
@@ -546,10 +547,10 @@ REER change$_{t-1}$ &	0.122 &	0.093 &	0.096 &	0.472 \\
 \quad $\hat{q}_{it-1}$ &	\raisebox{.7ex}[0pt]{\scriptsize (0.091)} &	\raisebox{.7ex}[0pt]{\scriptsize (0.09)} &	\raisebox{.7ex}[0pt]{\scriptsize (0.09)} &	\raisebox{.7ex}[0pt]{\scriptsize (0.117)$^{***}$} \\
 oil price shock$_{t-1}$ &	&	0.353 &	0.356 &	\\
 \quad $\hat{\rho}_{t}$ &	&	\raisebox{.7ex}[0pt]{\scriptsize (0.024)$^{***}$} &	\raisebox{.7ex}[0pt]{\scriptsize (0.024)$^{***}$} &	\\
-export centrality$_{t-1}$ &	&	&	-.515 &	\\
-\quad $c_{it-1}$&	&	&	\raisebox{.7ex}[0pt]{\scriptsize (0.196)$^{***}$} &	\\
+import centrality$_{t-1}$ &	&	&	-.515 &	\\
+\quad $c^e_{it-1}$&	&	&	\raisebox{.7ex}[0pt]{\scriptsize (0.196)$^{***}$} &	\\
 \textbf{(centrality $^*$ shock)} &	\textbf{1.215} &	&	&	\textbf{9.691} \\
-\quad $(c_{it-1} \times \hat{\rho}_{t})$&	\raisebox{.7ex}[0pt]{\scriptsize (0.193)$^{***}$} &	&	&	\raisebox{.7ex}[0pt]{\scriptsize (3.788)$^{**}$} \\
+\quad $(c^e_{it-1} \times \hat{\rho}_{t})$&	\raisebox{.7ex}[0pt]{\scriptsize (0.193)$^{***}$} &	&	&	\raisebox{.7ex}[0pt]{\scriptsize (3.788)$^{**}$} \\
 \hline
 Observations &	5076 &	5076 &	5076 &	5076 \\
 Countries &	94 &	94 &	94 &	94 \\
